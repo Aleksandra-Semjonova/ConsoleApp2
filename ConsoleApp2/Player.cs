@@ -13,7 +13,9 @@ public class Player
     // your team
     public Team? Team { get; set; } = null;
 
-    // making constants
+
+
+    // konstantide tegemine
     private const double MaxSpeed = 5;
     private const double MaxKickSpeed = 25;
     private const double BallKickDistance = 10;
@@ -21,13 +23,13 @@ public class Player
 
     private Random _random = new Random();
 
-    // construct for calling a class
+    // konstruktsioon klassi kutsumiseks
     public Player(string name)
     {
         Name = name;
     }
 
-    // construct for calling a class
+    // konstruktsioon klassi kutsumiseks
     public Player(string name, double x, double y, Team team)
     {
         Name = name;
@@ -36,20 +38,20 @@ public class Player
         Team = team;
     }
 
-    // setting possition of a player
+    // mängija positsiooni määramine
     public void SetPosition(double x, double y)
     {
         X = x;
         Y = y;
     }
 
-    // getting absolute position for a team
+    // meeskonna absoluutse positsiooni saamine
     public (double, double) GetAbsolutePosition()
     {
         return Team!.Game.GetPositionForTeam(Team, X, Y);
     }
 
-    // getting distance to the ball
+    // palliga kauguse saamine
     public double GetDistanceToBall()
     {
         var ballPosition = Team!.GetBallPosition();
@@ -58,7 +60,7 @@ public class Player
         return Math.Sqrt(dx * dx + dy * dy);
     }
 
-    // moving towards the ball
+    // palli poole liikumine
     public void MoveTowardsBall()
     {
         var ballPosition = Team!.GetBallPosition();

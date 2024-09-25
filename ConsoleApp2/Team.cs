@@ -7,16 +7,6 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    internal class Team
-    {
-        ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JalgpalliMang
-    {
         public class Team
         {
             // objects of class "Team"
@@ -30,8 +20,8 @@ namespace JalgpalliMang
                 Name = name;
             }
 
-            // creating players and setting them on the field (random)
-            public void StartGame(int width, int height)
+        // mängijate loomine ja nende väljakule seadmine (juhuslik)
+        public void StartGame(int width, int height)
             {
                 Random rnd = new Random();
                 foreach (var player in Players)
@@ -43,7 +33,7 @@ namespace JalgpalliMang
                 }
             }
 
-            // if the players already in some team, if not then adding player to the list
+            // kui mängijad on juba mõnes meeskonnas, kui mitte, siis mängija lisamine nimekirja
             public void AddPlayer(Player player)
             {
                 if (player.Team != null) return;
@@ -51,8 +41,8 @@ namespace JalgpalliMang
                 player.Team = this;
             }
 
-            // getting ball position depending on team
-            // получаем позицию мяча в зависимости от команды
+        // pallipositsiooni saamine olenevalt meeskonnast
+        // получаем позицию мяча в зависимости от команды
             public (double, double) GetBallPosition()
             {
                 return Game.GetBallPositionForTeam(this);
@@ -63,11 +53,10 @@ namespace JalgpalliMang
             {
                 Game.SetBallSpeedForTeam(this, vx, vy);
             }
-
-            // getting clsoest player to the ball
-            // if distance smaller than best distance then this player will go to the ball
-            // подбираем ближайшего к мячу игрока
-            // если расстояние меньше наилучшего, то этот игрок пойдет к мячу
+        // lähima mängija pallile saamine
+        // kui vahemaa on väiksem kui parim, läheb see mängija palli juurde
+        // подбираем ближайшего к мячу игрока
+        // если расстояние меньше наилучшего, то этот игрок пойдет к мячу
             public Player GetClosestPlayerToBall()
             {
                 Player closestPlayer = Players[0];
@@ -91,7 +80,6 @@ namespace JalgpalliMang
                 GetClosestPlayerToBall().MoveTowardsBall();
                 Players.ForEach(player => player.Move());
             }
-        }
-    }
+      }
 }
-}
+
